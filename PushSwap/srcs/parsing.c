@@ -81,8 +81,8 @@ bool ft_split_init(char *str, t_node **stack_a)
 			ft_node_addback((int)value, stack_a);
 		i++;
 	}
-	while (i)
-		free(split[i--]);
+	while (i--)
+		free(split[i]);
 	free(split);
 	return (true);
 }

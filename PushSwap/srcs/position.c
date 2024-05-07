@@ -17,6 +17,7 @@ bool ft_affect_current(t_node *stack)
 	return (true);
 }
 
+// Affecte la mediane
 bool ft_affect_median(t_node *stack)
 {
 	int i;
@@ -29,9 +30,9 @@ bool ft_affect_median(t_node *stack)
 	while (stack)
 	{
 		if (i > len / 2)
-			stack->above_median = true;
-		else
 			stack->above_median = false;
+		else
+			stack->above_median = true;
 		stack = stack->next;
 		i++;
 	}
@@ -42,7 +43,9 @@ bool ft_node_set(t_node *s_a, t_node *s_b)
 {
 	if (!s_a || !s_b)
 		return (false);
-	if (!ft_affect_current(s_b) || !ft_affect_median(s_b) || !ft_affect_current(s_a) || !ft_affect_median(s_a) || !ft_affect_cost(s_a, s_b)
+	if (!ft_affect_current(s_b) || !ft_affect_median(s_b) 
+		|| !ft_affect_current(s_a) || !ft_affect_median(s_a) 
+		|| !ft_affect_cost(s_a, s_b)
 		|| !ft_find_cheapest(s_b))
 		return (false);
 	return (true);

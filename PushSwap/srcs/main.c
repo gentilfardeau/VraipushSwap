@@ -20,10 +20,7 @@ int main(int argc, char **argv)
 	ft_affect_median(stack_a);
 	ft_affect_median(stack_b);
 	ft_node_set(stack_a, stack_b);
-	ft_print_stack_content(stack_b, "target_node");
-	ft_print_stack_content(stack_b, "above_median");
-	ft_print_stack_content(stack_a, "current_pos");
-	ft_print_stack_content(stack_b, "cost");
+	ft_print_stack_content(stack_b, "content");
 	ft_free_all(stack_a, stack_b);
 	return (0);
 }

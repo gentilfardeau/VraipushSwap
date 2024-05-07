@@ -48,10 +48,7 @@ bool ft_affect_cost(t_node *s_a, t_node *s_b)
 		if (s_b->above_median == true)
 			s_b->cost = s_b->current_pos + s_b->target_node->current_pos; 
 		else
-		{
-			ft_printf("OH LA D\n");
 			s_b->cost = len_b - s_b->current_pos + s_b->target_node->current_pos;
-		}
 		ft_printf("Noeud traite = %d || Cout = %d \n", s_b->content, s_b->cost);
 		s_b = s_b->next;
 	}
