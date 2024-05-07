@@ -33,7 +33,7 @@ void ft_print_stack_content(t_node *stack, char *content)
 		if (i == 3)
 		{
 			if (stack->target_node)
-				ft_printf("%d Target node of the node : %d \n",stack->content, stack->target_node->content);
+				ft_printf("%d Target node of the node : %d \n", stack->target_node->content ,stack->content);
 			else
 				ft_printf("Target node not found.\n");
 		}

@@ -9,22 +9,23 @@ int main(int argc, char **argv)
 
 	if (argc <= 1)
 		return (0);
-	if (ft_parsing(argv, &stack_a) || ft_stack_sorted(stack_a))
+	if (!ft_parsing(argv, &stack_a) || ft_stack_sorted(stack_a))
 	{
 		ft_free_all(stack_a, stack_b);
 		return (ft_error_message());
 	}
 	while(ft_stack_len(stack_a) > 3)
 		ft_push_b(&stack_a, &stack_b);
-	// while (stack_b)
-	// {
-	// 	ft_cost_affect(stack_b, stack_a);
-	// 	stack_b = stack_b->next;
-	// }
-	// ft_cost_affect(stack_b, stack_a);
-	if (ft_sorting(stack_a, stack_b))
-		return (ft_free_all(stack_a, stack_b));
-	// ft_free_all(stack_a, stack_b);
+	ft_find_target_node(stack_a, stack_b);
+	ft_affect_current(stack_b);
+	ft_affect_median(stack_b);
+	ft_printf("STACK A = \n");
+	ft_print_stack_content(stack_a, "content");
+	ft_printf("Apres affect \n");
+	ft_print_stack_content(stack_b, "current_pos");
+	ft_print_stack_content(stack_b, "above_median");
+	ft_print_stack_content(stack_b, "target_node");
+	ft_free_all(stack_a, stack_b);
 	return (0);
 }
 

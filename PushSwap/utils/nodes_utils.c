@@ -11,7 +11,31 @@ t_node *ft_node_init (int value)
     newnode->content = value;
     newnode->next = NULL;
 	newnode->previous = NULL;
+	newnode->target_node = NULL;
     return (newnode);
+}
+
+// Ajoute le noeud a la fin
+void ft_node_addback (int content, t_node **stack)
+{
+	t_node *tmp;
+	t_node *new;
+
+	new = ft_node_init(content);
+	if (!new)
+		return;
+	if (stack)
+	{
+		if(*stack == NULL)
+			*stack = new;
+		else 
+		{
+			tmp = ft_node_findlast(*stack);
+			tmp->next = new;
+			new->previous = tmp;	
+		}
+	}
+	return;
 }
 
 // Trouve le dernier noeud de la liste
@@ -28,23 +52,6 @@ t_node *ft_node_findlast (t_node *list)
 	return (list);
 }
 
-// Ajoute le noeud a la fin
-void ft_node_addback (t_node *new, t_node **stack)
-{
-	t_node *tmp;
-
-	if (stack)
-	{
-		if(*stack == NULL)
-			*stack = new;
-		else 
-		{
-			tmp = ft_node_findlast(*stack);
-			tmp->next = new;
-			new->previous = tmp;	
-		}
-	}
-}
 
 // Compte le nombre de noeuds d'une stack
 int ft_stack_len(t_node *stack)
@@ -60,13 +67,16 @@ int ft_stack_len(t_node *stack)
 	return (i);
 }
 
-// Imprime les contenus stack
-void ft_print_stack(t_node *stack)
+t_node *ft_find_smallest(t_node *stack)
 {
+	t_node *tmp;
+	
+	tmp = stack;
 	while (stack)
 	{
-		ft_printf("%d \n", stack->content);
+		if (stack->content < tmp->content)
+			tmp= stack;
 		stack = stack->next;
 	}
-	return;
+	return (tmp);
 }

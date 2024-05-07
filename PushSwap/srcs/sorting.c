@@ -26,15 +26,12 @@ int ft_tiny_sort(t_node *s_a, t_node *s_b)
 
 int ft_mini_sort(t_node *s_a)
 {
-	ft_printf("mini \n");
-	ft_print_stack_content(s_a, "next");
+	ft_printf("Value node : %d \n", s_a->content);
 	return (0);
 }
 
 int ft_sorting(t_node *stack_a, t_node *stack_b)
 {
-	if (ft_target_init(stack_b) || ft_current_affect(stack_a))
-		return (1);
 	if (ft_stack_len(stack_a) == 3)
 		ft_mini_sort(stack_a);
 	else if (ft_stack_len(stack_a) <= 5)

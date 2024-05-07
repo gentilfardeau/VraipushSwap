@@ -20,7 +20,7 @@ int ft_free_all(t_node *s_a, t_node *s_b)
 	}
 	while(s_b)	
 	{
-		tmp = s_a->next;
+		tmp = s_b->next;
 		if (ft_free_node(s_b))
 			return (1);
 		s_b = tmp;

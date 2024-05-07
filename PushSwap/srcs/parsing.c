@@ -22,22 +22,24 @@ int ft_check_digit(char *str, bool space)
 }
 
 // Trouve les doubles une fois la stack initialisee
-int ft_find_double(t_node *stack)
+bool ft_check_double(t_node *stack)
 {
 	int value;
+	t_node *tmp;
 
 	while (stack)
 	{
+		tmp = stack->next;
 		value = stack->content;
-		while (stack->next != NULL)
+		while (tmp)
 		{
-			stack = stack->next;
-			if (value == stack->content)
-				return (1);
+			if (tmp->content == stack->content)
+				return (false);
+			tmp = tmp -> next;
 		}
 		stack = stack->next;
 	}
-	return (0);
+	return (true);
 }
 
 // Trouver les espaces dans les strings
@@ -62,53 +64,53 @@ int ft_space_found(char *str)
 
 
 // Permet de stocker les splits dans des nodes
-int ft_split_init(char *str, t_node **stack_a)
+bool ft_split_init(char *str, t_node **stack_a)
 {
 	int i;
 	int value;
 	char **split;
-	t_node *new;
 
 	i = 0;
 	split = ft_split(str, ' ');
 	while (split[i])
 	{
 		if (ft_check_digit(split[i], true))
-			return (1);
-		value = ft_atoi(split[i]);
-		new = ft_node_init(value);
-		ft_node_addback(new, stack_a);
+			return (false);
+		value = ft_atol(split[i]);
+		if (ft_atoi_checked(value))
+			ft_node_addback((int)value, stack_a);
 		i++;
 	}
-	return (0);
+	return (true);
 }
-
+ 
 // Englobe le parsing et initialise la stack A
-int ft_parsing(char **argv, t_node **stack_a)
+bool ft_parsing(char **argv, t_node **stack_a)
 {
 	int i;
-	t_node *new;
+	long nb;
 
-	if (!argv)
-		return (1);
+	if (!argv || !stack_a)
+		return (false);
 	i = 1;
 	while (argv[i])
 	{
 		if (ft_space_found(argv[i]) > 1)
 		{
-			if (ft_split_init(argv[i], stack_a))
-				return (1);
+			if (!ft_split_init(argv[i], stack_a))
+				return (false);
 		}
-		else if (ft_check_digit(argv[i], true))
-			return (1);
-		else 
+		else
 		{
-			new = ft_node_init(ft_atoi(argv[i]));
-			ft_node_addback(new, stack_a);
+			nb = ft_atol(argv[i]);
+			if (ft_atoi_checked(nb))
+				ft_node_addback((int)nb, stack_a);
+			else
+				return (false);
 		}
-		if (ft_find_double(*stack_a))
-			return (1);
 		i++;
 	}
-	return (0);
+	if (!ft_check_double(*stack_a))
+		return (false);
+	return (true);
 }
