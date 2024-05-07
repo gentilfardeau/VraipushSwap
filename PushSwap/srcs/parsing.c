@@ -81,6 +81,9 @@ bool ft_split_init(char *str, t_node **stack_a)
 			ft_node_addback((int)value, stack_a);
 		i++;
 	}
+	while (i)
+		free(split[i--]);
+	free(split);
 	return (true);
 }
  
@@ -105,8 +108,6 @@ bool ft_parsing(char **argv, t_node **stack_a)
 			nb = ft_atol(argv[i]);
 			if (ft_atoi_checked(nb))
 				ft_node_addback((int)nb, stack_a);
-			else
-				return (false);
 		}
 		i++;
 	}

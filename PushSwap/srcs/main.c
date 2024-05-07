@@ -17,14 +17,13 @@ int main(int argc, char **argv)
 	while(ft_stack_len(stack_a) > 3)
 		ft_push_b(&stack_a, &stack_b);
 	ft_find_target_node(stack_a, stack_b);
-	ft_affect_current(stack_b);
+	ft_affect_median(stack_a);
 	ft_affect_median(stack_b);
-	ft_printf("STACK A = \n");
-	ft_print_stack_content(stack_a, "content");
-	ft_printf("Apres affect \n");
-	ft_print_stack_content(stack_b, "current_pos");
-	ft_print_stack_content(stack_b, "above_median");
+	ft_node_set(stack_a, stack_b);
 	ft_print_stack_content(stack_b, "target_node");
+	ft_print_stack_content(stack_b, "above_median");
+	ft_print_stack_content(stack_a, "current_pos");
+	ft_print_stack_content(stack_b, "cost");
 	ft_free_all(stack_a, stack_b);
 	return (0);
 }

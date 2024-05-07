@@ -22,6 +22,7 @@ typedef struct s_node
 {
 	int	content;
 	bool above_median;
+	bool cheapest;
 	int cost;
 	int current_pos;
 	struct s_node *target_node;
@@ -54,11 +55,13 @@ int ft_swap_both(t_node **a, t_node **b);
 // COUTS ET POSITIONS //////////////////////////////
 // position.c Gestion des positions Current + Target
 bool ft_affect_current(t_node *stack);
+bool ft_affect_median(t_node *stack);
+bool ft_node_set(t_node *s_a, t_node *s_b);
 
 // cost.c Gere ce qui est associe au cout
 bool ft_find_target_node(t_node *node, t_node *s_a);
-bool ft_affect_cost(t_node *stack);
-bool ft_affect_median(t_node *stack);
+bool ft_affect_cost(t_node *s_a, t_node *s_b);
+bool ft_find_cheapest(t_node *s_b);
 
 
 // ALGO ET TRI  //////////////////////////////

@@ -12,7 +12,7 @@ int ft_strcmp(char *s1, char *s2)
 void ft_print_stack_content(t_node *stack, char *content)
 {
 	int i;
-	char *content_array[7] = {"content", "above_median", "cost", "target_node", "current_pos", "previous", "next"};
+	char *content_array[8] = {"content", "above_median", "cost", "target_node", "current_pos", "previous", "next", "cheapest"};
 
 	i = 0;
 	while (ft_strcmp(content, content_array[i]))
@@ -38,7 +38,7 @@ void ft_print_stack_content(t_node *stack, char *content)
 				ft_printf("Target node not found.\n");
 		}
 		if (i == 4)
-			ft_printf("Current pos of the node : %d \n", stack->current_pos);
+			ft_printf("Current pos of the node %d : %d \n", stack->content,stack->current_pos);
 		if (i == 5)
 		{
 			if (!stack->previous)
@@ -52,6 +52,13 @@ void ft_print_stack_content(t_node *stack, char *content)
 				ft_printf("%d Is the last of the stack \n", stack->content);
 			else
 				ft_printf("%d Next node is : %d \n", stack->content, stack->next->content);
+		}
+		if (i == 7)
+		{
+			if (stack->cheapest)
+				ft_printf("%d Is the cheapest \n", stack->content);
+			else
+				ft_printf("%d Is expensive as fuck\n", stack->content);
 		}
 		stack = stack->next;
 	}
