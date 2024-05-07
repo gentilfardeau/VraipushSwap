@@ -21,10 +21,6 @@ int main(int argc, char **argv)
 	// 	ft_cost_affect(stack_b, stack_a);
 	// 	stack_b = stack_b->next;
 	// }
-	ft_print_stack_content(stack_b, "content");
-	ft_print_stack_content(stack_a, "content");
-	ft_cost_affect(stack_b, stack_a);
-	ft_print_stack_content(stack_b, "target_node");
 	// ft_cost_affect(stack_b, stack_a);
 	if (ft_sorting(stack_a, stack_b))
 		return (ft_free_all(stack_a, stack_b));

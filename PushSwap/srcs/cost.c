@@ -1,24 +1,36 @@
 #include "../include/push_swap.h"
 
-t_node *ft_find_target_node(t_node *node, t_node *s_a)
+// Affecte a chaque noeud sa target_pos
+t_node *ft_target_affect(t_node *stack, t_node *node)
 {
+	t_node *min_max;
+
+	min_max = stack;
+	ft_printf("Min_max : %d \n", min_max->content);
+	ft_printf("Min_max content: %d \n", stack->content);
+	while(stack)
+	{
+		
+		if (min_max->content > stack->content && stack->content > node->content)
+			min_max = stack;
+		stack = stack->next;
+	}
+	ft_printf("Min_max de fin : %d \n", min_max->content);
+	return (min_max);
 }
 
-int ft_cost_affect(t_node *s_b, t_node *s_a)
-{
-}
-
-int ft_cost_node(t_node **stack_a)
+// Affecte target_pos a tous les noeuds
+int ft_target_init(t_node *s_a, t_node *s_b)
 {
 	t_node *tmp;
- 
-	tmp = *stack_a;
-	if (!stack_a)
+
+	if (!s_b)
 		return (1);
-	while (stack_a != NULL)
+	tmp = s_b;
+	while (tmp)
 	{
-		(*stack_a)->cost = ft_cost_affect(*stack_a, tmp);
-		*stack_a = (*stack_a)->next;
+		tmp->target_node = ft_target_affect(s_a, tmp);
+		tmp = tmp->next;
 	}
-	return (0);
+	return(0);
 }

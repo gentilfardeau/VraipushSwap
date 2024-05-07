@@ -52,13 +52,14 @@ int ft_swap_both(t_node **a, t_node **b);
 
 // COUTS ET POSITIONS //////////////////////////////
 // position.c Gestion des positions Current + Target
-int ft_target_affect(t_node *stack, t_node *node);
-int ft_target_init(t_node *stack);
+t_node *ft_target_affect(t_node *stack, t_node *node);
 int ft_current_affect(t_node *stack);
 
 // cost.c Gere ce qui est associe au cout
-int	ft_cost_affect(t_node *node,t_node *sk_a);
-int ft_cost_(t_node **stack_a);
+
+t_node *ft_target_affect(t_node *stack, t_node *node);
+int ft_target_init(t_node *s_a, t_node *s_b);
+
 
 // ALGO ET TRI  //////////////////////////////
 // sorting.c Gestion du tri

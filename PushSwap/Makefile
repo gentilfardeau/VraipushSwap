@@ -7,7 +7,7 @@ SRCS =  srcs/main.c srcs/parsing.c  \
         utils/error_utils.c  utils/nodes_utils.c  utils/number_utils.c \
         utils/output_utils.c utils/stack_utils.c utils/extras.c \
 		utils/free.c \
-		include/split.c \
+		include/split.c 
 		
 
 OBJS = $(SRCS:.c=.o)

@@ -33,7 +33,7 @@ int ft_mini_sort(t_node *s_a)
 
 int ft_sorting(t_node *stack_a, t_node *stack_b)
 {
-	if (ft_target_init(stack_a) || ft_current_affect(stack_a))
+	if (ft_target_init(stack_b) || ft_current_affect(stack_a))
 		return (1);
 	if (ft_stack_len(stack_a) == 3)
 		ft_mini_sort(stack_a);
