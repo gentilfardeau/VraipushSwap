@@ -1,42 +1,49 @@
 #include "../include/push_swap.h"
 
 // Gere la gestion des mouvements
-// int ft_operate(t_node **stack_a, t_node **stack_b)
-//{
-// return (1);
-//}
 
 // Synthetise et assemble le tri, et renvoie le nombre de moves
 // Prend en compte : l'affectations du poids, de l'index final et des mouvements
 
-int ft_huge_sort(t_node *s_a, t_node *s_b)
+bool ft_mini_sort(t_node **s_a)
 {
-	ft_printf("HUUUUUGE \n");
-	ft_print_stack_content(s_a, "content");
-	ft_print_stack_content(s_b, "content");
-	return (0);
-}
-int ft_tiny_sort(t_node *s_a, t_node *s_b)
-{
-	ft_printf("tiny \n");
-	ft_print_stack_content(s_a, "content");
-	ft_print_stack_content(s_b, "content");
-	return (0);
+	t_node *max;
+
+	if (!s_a)
+		return (false);
+	max = ft_find_biggest(*s_a);
+	if (max == (*s_a))
+		ft_rotate_a(s_a, false);
+	else if ((*s_a)->next == max)
+		ft_rr_a(s_a, false);
+	if ((*s_a)->content > (*s_a)->next->content)
+		ft_swap_a(s_a, false);
+	return (true);
 }
 
-int ft_mini_sort(t_node *s_a)
+bool ft_sorting(t_node **s_a, t_node **s_b)
 {
-	ft_printf("Value node : %d \n", s_a->content);
-	return (0);
-}
+	int len_a;
 
-int ft_sorting(t_node *stack_a, t_node *stack_b)
-{
-	if (ft_stack_len(stack_a) == 3)
-		ft_mini_sort(stack_a);
-	else if (ft_stack_len(stack_a) <= 5)
-		ft_tiny_sort(stack_a, stack_b);
-	else if (ft_stack_len(stack_a) > 5)
-		ft_huge_sort(stack_a, stack_b);
-	return (0);
+	if (!s_a || !s_b)
+		return (false);
+	len_a = ft_stack_len(*s_a);
+	if (len_a-- > 3 && !ft_stack_sorted(*s_a))
+		ft_push_b(s_a, s_b, false);
+	if (len_a-- > 3 && !ft_stack_sorted(*s_a))
+		ft_push_b(s_a, s_b, false);
+	while (len_a-- > 3 && !ft_stack_sorted(*s_a))
+	{
+		if (!ft_set_nodes_a(*s_a, *s_b) || !ft_move_sort(*s_a, *s_b))
+			return (false);
+	}
+	ft_mini_sort(s_a);
+	while (s_b)
+	{
+		if (!ft_set_nodes_b(*s_b, *s_a) || !ft_move_sort(*s_b, *s_a))
+			return (false);
+	}
+	ft_affect_current(*s_a);
+	ft_final_sort(*s_a);
+	return (true);
 }

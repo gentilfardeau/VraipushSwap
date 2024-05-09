@@ -1,31 +1,37 @@
 #include "../../include/push_swap.h"
 
 // Push d'une stack a l'autre
-void ft_push(t_node **src, t_node **dst)
+bool ft_push(t_node **src, t_node **dst)
 {
 	t_node *tmp;
 
 	if (!dst || !src)	
-		return;
+		return (false);
 	tmp = *src;
 	*src = (*src)->next;
 	tmp->next = *dst;
 	*dst = tmp;
-	return;
+	return (true);
 }
 
 // Push de B vers A
-void ft_push_a(t_node **stack_a, t_node **stack_b)
+bool	ft_push_a(t_node **s_a, t_node **s_b, bool checker)
 {
-	ft_push(stack_b, stack_a);
-	ft_write("pa\n");
-	return;
+	if (!s_a || !s_b)
+		return (false);
+	ft_push(s_b, s_a);
+	if (checker)
+		ft_printf("pa\n");
+	return (true);
 }
 
 // Push de A vers B
-void ft_push_b(t_node **stack_a, t_node **stack_b)
+bool	ft_push_b(t_node **s_a, t_node **s_b, bool checker)
 {
-	ft_push(stack_a, stack_b);
-	ft_write("pb\n");
-	return;
+	if (!s_a || !s_b)
+		return (false);
+	ft_push(s_a, s_b);
+	if (checker)
+		ft_printf("pb\n");
+	return (true);
 }

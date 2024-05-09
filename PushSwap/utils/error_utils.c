@@ -2,10 +2,7 @@
 
 int ft_error_message (void)
 {
-    char *str;
-
-    str = "Error\n";
-    ft_write(str);
+	ft_printf("Error\n");
     return (1);
 }
 

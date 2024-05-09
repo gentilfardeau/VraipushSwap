@@ -38,15 +38,3 @@ bool ft_affect_median(t_node *stack)
 	}
 	return (true);
 }
-
-bool ft_node_set(t_node *s_a, t_node *s_b)
-{
-	if (!s_a || !s_b)
-		return (false);
-	if (!ft_affect_current(s_b) || !ft_affect_median(s_b) 
-		|| !ft_affect_current(s_a) || !ft_affect_median(s_a) 
-		|| !ft_affect_cost(s_a, s_b)
-		|| !ft_find_cheapest(s_b))
-		return (false);
-	return (true);
-}
