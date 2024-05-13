@@ -16,8 +16,10 @@ int main(int argc, char **argv)
 	}
 	if (!ft_sorting(&stack_a, &stack_b))
 		ft_printf(" JAJAJA\n");
-	ft_print_stack_content(stack_a, "target_node");
-	ft_printf("Puteuh \n");
+	ft_rotate_a(&stack_a, false);
+	// ft_print_stack_content(stack_a, "cheapest", 'a');
+	// ft_print_stack_content(stack_b, "content", 'b');
+	ft_print_stack_content(stack_a, "content", 'a');
 	ft_free_all(stack_a, stack_b);
 	return (0);
 }

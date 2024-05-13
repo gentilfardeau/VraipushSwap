@@ -23,17 +23,18 @@ bool ft_reverse_rotate(t_node **stack)
 
 // Reverse rotate a uniquement
 
-bool ft_rr_a(t_node **s_a, bool checker)
+bool ft_reverse_rotate_a(t_node **s_a, bool checker)
 {
 	if (!s_a)
 		return (false);
-	ft_reverse_rotate(s_a);
+	if (!ft_reverse_rotate(s_a))
+		ft_printf("Suce \n");
 	if (checker)
 		ft_printf("rra\n");
 	return (true);
 }
 
-bool ft_rr_b(t_node **s_b, bool checker)
+bool ft_reverse_rotate_b(t_node **s_b, bool checker)
 {
 	if (!s_b)
 		return (false);
@@ -43,12 +44,12 @@ bool ft_rr_b(t_node **s_b, bool checker)
 	return (true);
 }
 
-bool ft_rrr(t_node **s_a, t_node **s_b, bool checker)
+bool ft_complete_reverse_rotate(t_node **s_a, t_node **s_b, bool checker)
 {
 	if (!s_a || !s_b)
 		return (false);
-	ft_reverse_rotate(s_a);
-	ft_reverse_rotate(s_b);
+	ft_reverse_rotate_a(s_a, false);
+	ft_reverse_rotate_b(s_b, false);
 	if (checker)
 		ft_printf("rrr\n");
 	return (true);

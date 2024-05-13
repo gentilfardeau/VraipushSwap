@@ -1,36 +1,5 @@
 #include "../include/push_swap.h"
 
-// Assigne a chaque noeud sa target
-bool	ft_find_target_node(t_node *active, t_node *passive)
-{
-	int	i;
-	t_node	*tmp;
-	t_node	*target;
-
-	if (!active || !passive)
-		return (false);
-	while (active)
-	{
-		i = INT_MAX;		
-		tmp = active;
-		while(tmp)
-		{
-			if (tmp->content > passive->content && tmp->content < i)
-			{
-				i = tmp->content;
-				target = tmp;
-			}
-			tmp = tmp->next;
-		}
-		if (i == INT_MAX)
-			active->target_node = ft_find_smallest(passive);
-		else
-			active->target_node = target;
-		active = active->next;
-	}
-	return (true);
-}
-
 // Update le cout
 bool	ft_affect_cost(t_node *active, t_node *passive)
 {
@@ -54,7 +23,7 @@ bool	ft_affect_cost(t_node *active, t_node *passive)
 }
 
 // Trouve le cout le plus petit pour bouger le prochain noeud
-bool ft_find_cheapest(t_node *stack)
+bool ft_affect_cheapest(t_node *stack)
 {
 	int min;
 	t_node *tmp;
@@ -79,4 +48,15 @@ bool ft_find_cheapest(t_node *stack)
 		stack = stack->next;
 	}
 	return (false);
+}
+
+t_node *ft_find_cheapest(t_node *stack)
+{
+	while (stack)
+	{
+		if (stack->cheapest == true)
+			return (stack);
+		stack = stack->next;
+	}
+	return (NULL);
 }

@@ -17,8 +17,10 @@ bool ft_rotate(t_node **stack)
 
 bool ft_rotate_a(t_node **s_a, bool checker)
 {
-	if (!s_a || !ft_rotate(s_a))
+	if (!s_a)
 		return (false);
+	if (!ft_rotate(s_a))
+		ft_printf("Suce\n");
 	if (checker)
 		ft_printf("ra\n");
 	return (true);
@@ -41,5 +43,14 @@ bool ft_rotate_both(t_node **s_a, t_node **s_b, bool checker)
 		return (false);
 	if (checker)
 		ft_printf("rr\n");
+	return (true);
+}
+ 
+bool ft_complete_rotate(t_node **s_a, t_node **s_b, t_node *cheap)
+{
+	while(*s_b != cheap->target_node && *s_a != cheap)
+		ft_rotate_both(s_a, s_b, false);
+	ft_affect_current(*s_a);
+	ft_affect_current(*s_b);
 	return (true);
 }

@@ -39,14 +39,16 @@ bool	ft_push_b(t_node **s_a, t_node **s_b, bool checker);
 
 // reverse_rotate.c Ca rotate mais a l'envers
 bool	ft_reverse_rotate(t_node **stack);
-bool	ft_rr_a(t_node **s_a, bool checker);
-bool	ft_rr_b(t_node **s_b, bool checker);
-bool	ft_rrr(t_node **s_a, t_node **s_b, bool checker);
+bool	ft_reverse_rotate_a(t_node **s_a, bool checker);
+bool	ft_reverse_rotate_b(t_node **s_b, bool checker);
+bool	ft_complete_reverse_rotate(t_node **s_a, t_node **s_b, bool checker);
+
 // rotate.c Ca rotate
 bool	ft_rotate(t_node **stack);
 bool	ft_rotate_a(t_node **a, bool checker);
 bool	ft_rotate_b(t_node **b, bool checker);
-bool	ft_rotate_both(t_node **a, t_node **b, bool checker);
+bool	ft_rotate_both(t_node **s_a, t_node **s_b, bool checker);
+bool ft_complete_rotate(t_node **s_a, t_node **s_b, t_node *cheap);
 
 // swap.c Ca swap 
 bool	ft_swap(t_node **stack);
@@ -56,18 +58,24 @@ bool	ft_swap_both(t_node **a, t_node **b, bool checker);
 
 // COUTS ET POSITIONS //////////////////////////////
 // position.c Gestion des positions Current + Target
+bool	ft_find_target_node(t_node *active, t_node *passive);
 bool	ft_affect_current(t_node *stack);
 bool	ft_affect_median(t_node *stack);
+
 // cost.c Gere ce qui est associe au cout
-bool	ft_find_target_node(t_node *active, t_node *passive);
+bool ft_affect_cheapest(t_node *stack);
+t_node *ft_find_cheapest(t_node *stack);
 bool	ft_affect_cost(t_node *active, t_node *passive);
-bool	ft_find_cheapest(t_node *stack);
 
 
 // ALGO ET TRI  //////////////////////////////
 // sorting.c Gestion du tri
+bool 	ft_set_to_push(t_node **stack, t_node *on_top, char c);
 bool	ft_mini_sort(t_node **s_a);
+bool 	ft_move_a_to_b(t_node **s_a, t_node **s_b);
+bool	ft_move_b_to_a(t_node **s_a, t_node **s_b);
 bool	ft_sorting(t_node **s_a,t_node **s_b);
+bool 	ft_min_to_top(t_node **s_a);
 
 // PARSING //////////////////////////////
 // parsing.c Gestion du parsing
@@ -111,7 +119,7 @@ t_node	*ft_find_biggest(t_node *stack);
 // sorting_utils.c Gestion des elements de tri
 bool	ft_set_nodes(t_node *active, t_node *passive);
 bool	ft_move_sort(t_node *active, t_node *passive);
-bool	ft_final_sort(t_node *s_a);
+bool	ft_final_sort(t_node **s_a);
 
 // split.c Bah split
 size_t	ft_checkcheck_split(char const *s, char c);
@@ -122,7 +130,7 @@ char	**ft_split(char *s, char c);
 
 // extras.c Ptites choses pour tester plus simplement
 int		ft_strcmp(char *s1, char *s2);
-void	ft_print_stack_content(t_node *stack, char *content);
+void	ft_print_stack_content(t_node *stack, char *content, char c);
 
 // MAIN //////////////////////////////
 // main.c ...

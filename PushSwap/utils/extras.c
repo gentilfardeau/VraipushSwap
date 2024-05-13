@@ -9,12 +9,16 @@ int ft_strcmp(char *s1, char *s2)
     return (*s1 - *s2);
 }
 
-void ft_print_stack_content(t_node *stack, char *content)
+void ft_print_stack_content(t_node *stack, char *content, char c)
 {
 	int i;
 	char *content_array[8] = {"content", "above_median", "cost", "target_node", "current_pos", "previous", "next", "cheapest"};
 
 	i = 0;
+	if (c == 'a')
+		ft_printf("Stack A\n");
+	if (c == 'b')
+		ft_printf("Stack B\n");
 	while (ft_strcmp(content, content_array[i]))
 		i++;
 	while(stack)
