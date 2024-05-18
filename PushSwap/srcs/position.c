@@ -1,67 +1,83 @@
 #include "../include/push_swap.h"
-// Trouve le target_node de chaque noeud
-bool	ft_find_target_node(t_node *active, t_node *passive)
-{
-	int	i;
-	t_node	*tmp;
-	t_node	*target;
 
-	if (!active || !passive)
+// Trouve les target_node pour A
+bool	ft_set_target_a(t_node *s_a, t_node *s_b)
+{
+	t_node *current_b;
+	t_node *target;
+	int match_index;
+
+	if (!s_a || !s_b)
 		return (false);
-	while (active)
+	while (s_a)
 	{
-		i = INT_MAX;		
-		tmp = active;
-		while(tmp)
+		match_index = INT_MIN;
+		current_b = s_b;
+		while (current_b)
 		{
-			if (tmp->content > passive->content && tmp->content < i)
+			if (current_b->content < s_a->content && current_b->content > match_index)
 			{
-				i = tmp->content;
-				target = tmp;
+				match_index = current_b->content;
+				target = current_b;
 			}
-			tmp = tmp->next;
+			current_b = current_b->next;
 		}
-		if (i == INT_MAX)
-			active->target_node = ft_find_smallest(passive);
+		if (match_index == INT_MIN)
+			s_a->target_node = ft_find_biggest(s_b);
 		else
-			active->target_node = target;
-		active = active->next;
+			s_a->target_node = target;
+		s_a = s_a->next;
 	}
 	return (true);
 }
-// Affecte current_pos a la stack
-bool ft_affect_current(t_node *stack)
-{
-	int i;
 
-	if (!stack)
+// Trouve les target_node pour B
+bool ft_set_target_b(t_node *s_a, t_node *s_b)
+{
+	t_node *current_a;
+	t_node *target;
+	int match_index;
+
+	if (!s_a || !s_b)
 		return (false);
-	i = 0;
-	while(stack)
+	while (s_b)
 	{
-		stack->current_pos = i;
-		stack = stack->next;
-		i++;
+		match_index = INT_MAX;
+		current_a = s_a;
+		while (current_a)
+		{
+			if (current_a->content > s_b->content && current_a->content > match_index)
+			{
+				match_index = current_a->content;
+				target = current_a;
+			}
+			current_a = current_a->next;
+		}
+		if (match_index == INT_MAX)
+			s_b->target_node = ft_find_smallest(s_b);
+		else
+			s_b->target_node = target;
+		s_b = s_b->next;
 	}
 	return (true);
 }
-
-// Affecte la mediane
-bool ft_affect_median(t_node *stack)
+// Set current_pos a la stack
+bool ft_set_current(t_node *stack)
 {
 	int i;
-	int len;
+	int median;
 
 	if (!stack)
 		return (false);
 	i = 0;
-	len = ft_stack_len(stack);
+	median = ft_stack_len(stack) / 2;
 	while (stack)
 	{
-		if (i > len / 2)
-			stack->above_median = false;
-		else
+		stack->current_pos = i;
+		if (i <= median)
 			stack->above_median = true;
+		else
+			stack->above_median = false;
 		stack = stack->next;
 		i++;
 	}

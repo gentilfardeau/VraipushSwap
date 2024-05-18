@@ -7,7 +7,7 @@ bool ft_rotate(t_node **stack)
 
 	if (!*stack || !(*stack)->next)
 		return (false);
-	last = ft_node_findlast(*stack);
+	last = ft_find_last(*stack);
 	newhead = (*stack)->next;
 	last->next = *stack;
 	*stack = newhead;
@@ -15,18 +15,18 @@ bool ft_rotate(t_node **stack)
 	return (true);
 }
 
-bool ft_rotate_a(t_node **s_a, bool checker)
+bool ft_ra(t_node **s_a, bool checker)
 {
 	if (!s_a)
 		return (false);
 	if (!ft_rotate(s_a))
-		ft_printf("Suce\n");
+		return (false);
 	if (checker)
 		ft_printf("ra\n");
 	return (true);
 }
 
-bool ft_rotate_b(t_node **s_b, bool checker)
+bool ft_rb(t_node **s_b, bool checker)
 {
 	if (!s_b || !ft_rotate(s_b))
 		return (false);
@@ -35,22 +35,25 @@ bool ft_rotate_b(t_node **s_b, bool checker)
 	return (true);
 }
 
-bool ft_rotate_both(t_node **s_a, t_node **s_b, bool checker)
+bool ft_rr(t_node **s_a, t_node **s_b, bool checker)
 {
 	if (!s_a || !s_b)
 		return (false);
-	if (!ft_rotate(s_a) || !ft_rotate(s_b))
+	if (!ft_ra(s_a, false) || !ft_rb(s_b, false))
 		return (false);
 	if (checker)
 		ft_printf("rr\n");
 	return (true);
 }
- 
-bool ft_complete_rotate(t_node **s_a, t_node **s_b, t_node *cheap)
+
+bool ft_rotate_both(t_node **s_a, t_node **s_b, t_node *cheap)
 {
-	while(*s_b != cheap->target_node && *s_a != cheap)
-		ft_rotate_both(s_a, s_b, false);
-	ft_affect_current(*s_a);
-	ft_affect_current(*s_b);
+	if (!s_a || !s_b || !cheap)
+		return (false);
+	while (*s_b != cheap->target_node && *s_a != cheap)
+		ft_rr(s_a, s_b, false);
+	ft_set_current(*s_a);
+	ft_set_current(*s_b);
 	return (true);
 }
+ 

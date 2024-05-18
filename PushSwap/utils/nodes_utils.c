@@ -1,7 +1,23 @@
 #include "../include/push_swap.h"
 
+// Initialise les noeuds individuellement
+t_node	*ft_node_init(int value)
+{
+	t_node	*newnode;
+
+	newnode = malloc(sizeof(t_node));
+	if (!newnode)
+		return (NULL);
+	newnode->content = value;
+	newnode->next = NULL;
+	newnode->previous = NULL;
+	newnode->target_node = NULL;
+	newnode->cheapest = false;
+	return (newnode);
+}
+
 // Trouve le dernier noeud de la liste
-t_node	*ft_node_findlast (t_node *list)
+t_node	*ft_find_last (t_node *list)
 {
 	if (!list)
 		return (NULL);
@@ -37,7 +53,7 @@ t_node *ft_find_smallest(t_node *stack)
 	while (stack)
 	{
 		if (stack->content < tmp->content)
-			tmp= stack;
+			tmp = stack;
 		stack = stack->next;
 	}
 	return (tmp);

@@ -1,5 +1,5 @@
 #include "../include/push_swap.h"
-bool ft_atoi_checked(long nb)
+bool ft_atol_checked(long nb)
 {
 	if (nb > 2147483647 || nb < -2147483648  )
 		return (false);

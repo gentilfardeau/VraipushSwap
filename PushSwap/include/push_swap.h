@@ -39,16 +39,16 @@ bool	ft_push_b(t_node **s_a, t_node **s_b, bool checker);
 
 // reverse_rotate.c Ca rotate mais a l'envers
 bool	ft_reverse_rotate(t_node **stack);
-bool	ft_reverse_rotate_a(t_node **s_a, bool checker);
-bool	ft_reverse_rotate_b(t_node **s_b, bool checker);
-bool	ft_complete_reverse_rotate(t_node **s_a, t_node **s_b, bool checker);
+bool	ft_rra(t_node **s_a, bool checker);
+bool	ft_rrb(t_node **s_b, bool checker);
+bool	ft_rrr(t_node **s_a, t_node **s_b, bool checker);
+bool	ft_rev_rotate_both(t_node **s_a, t_node **s_b, t_node *cheap);
 
 // rotate.c Ca rotate
 bool	ft_rotate(t_node **stack);
-bool	ft_rotate_a(t_node **a, bool checker);
-bool	ft_rotate_b(t_node **b, bool checker);
-bool	ft_rotate_both(t_node **s_a, t_node **s_b, bool checker);
-bool ft_complete_rotate(t_node **s_a, t_node **s_b, t_node *cheap);
+bool	ft_ra(t_node **a, bool checker);
+bool	ft_rb(t_node **b, bool checker);
+bool	ft_rotate_both(t_node **s_a, t_node **s_b, t_node *cheap);
 
 // swap.c Ca swap 
 bool	ft_swap(t_node **stack);
@@ -58,14 +58,13 @@ bool	ft_swap_both(t_node **a, t_node **b, bool checker);
 
 // COUTS ET POSITIONS //////////////////////////////
 // position.c Gestion des positions Current + Target
-bool	ft_find_target_node(t_node *active, t_node *passive);
-bool	ft_affect_current(t_node *stack);
-bool	ft_affect_median(t_node *stack);
+bool	ft_set_target_a(t_node *active, t_node *passive);
+bool	ft_set_current(t_node *stack);
 
 // cost.c Gere ce qui est associe au cout
-bool ft_affect_cheapest(t_node *stack);
+bool ft_set_cheapest(t_node *stack);
 t_node *ft_find_cheapest(t_node *stack);
-bool	ft_affect_cost(t_node *active, t_node *passive);
+bool	ft_set_cost(t_node *active, t_node *passive);
 
 
 // ALGO ET TRI  //////////////////////////////
@@ -79,7 +78,7 @@ bool 	ft_min_to_top(t_node **s_a);
 
 // PARSING //////////////////////////////
 // parsing.c Gestion du parsing
-int		ft_check_digit(char *str, bool space);
+bool	ft_check_digit(char *str, bool space);
 bool	ft_check_double(t_node *stack);
 int		ft_space_found(char *str);
 int		ft_stack_sorted(t_node *stack);
@@ -89,9 +88,11 @@ bool	ft_parsing(char **argv, t_node **s_a);
 // UTILITAIRES //////////////////////////////
 // init.c Cree et refresh les nodes
 t_node *ft_node_init (int value);
-void ft_node_addback (int content, t_node **stack);
+bool ft_node_addback (int content, t_node **stack);
 bool ft_set_nodes_a(t_node *s_a, t_node *s_b);
+bool ft_set_target_b(t_node *s_a, t_node *s_b);
 bool ft_set_nodes_b(t_node *s_b, t_node *s_a);
+bool ft_set_to_push(t_node **stack, t_node *top, char c);
 
 // free.c Adieu les leaks
 int		ft_free_node(t_node *node);
@@ -106,12 +107,12 @@ int		ft_error_message(void);
 void	ft_abort_array(char **array);
 
 // number_utils.c Gestion des conversions int et char
-bool	ft_atoi_checked(long nb);
+bool	ft_atol_checked(long nb);
 long	ft_atol(const char *nptr);
 
 // node_utils.c Gestion des noeuds
 t_node	*ft_node_init (int value);
-t_node	*ft_node_findlast (t_node *list);
+t_node	*ft_find_last (t_node *list);
 int		ft_stack_len(t_node *stack);
 t_node	*ft_find_smallest(t_node *stack);
 t_node	*ft_find_biggest(t_node *stack);

@@ -3,14 +3,17 @@
 
 bool ft_final_sort(t_node **s_a)
 {
+	t_node *min;
+
 	if (!s_a)
 		return (false);
-	while (!ft_stack_sorted(*s_a))
+	min = ft_find_smallest(*s_a);
+	while ((*s_a)->content != min->content)
 	{
-		if (ft_find_smallest(*s_a)->above_median)
-			ft_rotate_a(s_a, false);
+		if (min->above_median)
+			ft_ra(s_a, false);
 		else
-			ft_reverse_rotate_a(s_a, false);
+			ft_rra(s_a , false);
 	}
 	return (true);
 }
