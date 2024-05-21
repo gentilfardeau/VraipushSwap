@@ -34,11 +34,9 @@ bool ft_move_a_to_b(t_node **s_a, t_node **s_b)
 // Permet les deplacements de B vers A
 bool ft_move_b_to_a(t_node **s_a, t_node **s_b)
 {
-	ft_print_stack_content(*s_a, "content", 'a');
-	ft_print_stack_content(*s_b, "content", 'b');
 	if (!s_a || !s_b)
 		return (false);
-	ft_set_to_push(s_a, (*s_b)->target_node, 'b');
+	ft_set_to_push(s_a, (*s_b)->target_node, 'a');
 	ft_push_a(s_a, s_b, false);
 	return (true);
 }
@@ -72,20 +70,22 @@ bool ft_sorting(t_node **s_a, t_node **s_b)
 		ft_push_b(s_a, s_b, false);
 	while (len_a-- > 3 && !ft_stack_sorted(*s_a))
 	{
-		ft_printf("Suce\n");
 		if (!ft_set_nodes_a(*s_a, *s_b) || !ft_move_a_to_b(s_a, s_b))
 			return (false);
 	}
-	ft_printf("len_a = %d\n", len_a);
 	ft_mini_sort(s_a);
+	ft_printf("Avant SB\n");
+	ft_print_stack_content(*s_a, "content", 'a');
 	while (*s_b)
 	{
 		if (!ft_set_nodes_b(*s_a, *s_b))
 			ft_printf("Zgueugounet\n");
+		ft_printf("Uiiii\n");
 		if (!ft_move_b_to_a(s_a, s_b))
 			ft_printf("Zeub\n");
 	}
 	ft_set_current(*s_a);
+	ft_print_stack_content(*s_a, "current_pos", 'a');
 	ft_final_sort(s_a);
 	return (true);
 }

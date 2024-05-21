@@ -3,14 +3,11 @@
 
 bool ft_final_sort(t_node **s_a)
 {
-	t_node *min;
-
 	if (!s_a)
 		return (false);
-	min = ft_find_smallest(*s_a);
-	while ((*s_a)->content != min->content)
+	while ((*s_a)->content != ft_find_smallest(*s_a)->content)
 	{
-		if (min->above_median)
+		if (ft_find_smallest(*s_a)->above_median)
 			ft_ra(s_a, false);
 		else
 			ft_rra(s_a , false);

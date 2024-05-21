@@ -12,7 +12,7 @@ bool ft_check_double(t_node *stack)
 		value = stack->content;
 		while (tmp)
 		{
-			if (tmp->content == stack->content)
+			if (tmp->content == value)
 				return (false);
 			tmp = tmp -> next;
 		}

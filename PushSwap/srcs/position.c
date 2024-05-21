@@ -46,7 +46,7 @@ bool ft_set_target_b(t_node *s_a, t_node *s_b)
 		current_a = s_a;
 		while (current_a)
 		{
-			if (current_a->content > s_b->content && current_a->content > match_index)
+			if (current_a->content > s_b->content && current_a->content < match_index)
 			{
 				match_index = current_a->content;
 				target = current_a;
@@ -54,7 +54,7 @@ bool ft_set_target_b(t_node *s_a, t_node *s_b)
 			current_a = current_a->next;
 		}
 		if (match_index == INT_MAX)
-			s_b->target_node = ft_find_smallest(s_b);
+			s_b->target_node = ft_find_smallest(s_a);
 		else
 			s_b->target_node = target;
 		s_b = s_b->next;

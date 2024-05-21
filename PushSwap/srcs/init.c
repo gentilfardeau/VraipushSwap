@@ -47,15 +47,15 @@ bool ft_set_nodes_b(t_node *s_a, t_node *s_b)
 	ft_set_current(s_a);
 	ft_set_current(s_b);
 	ft_set_target_b(s_a, s_b);
+	ft_printf("Set_nodes \n");
+	ft_print_stack_content(s_a, "content", 'a');
+	ft_print_stack_content(s_b, "current_pos", 'b');
 	ft_print_stack_content(s_b, "target_node", 'b');
 	return (true);
 }
  
 bool ft_set_to_push(t_node **stack, t_node *top, char c)
 {
-	ft_printf("top content = %d\n", top->content);
-	ft_printf("target content = %d\n", top->target_node->content);
-	ft_printf("stack content = %d", (*stack)->content);
 	while (*stack != top)
 	{
 		if (c == 'a')

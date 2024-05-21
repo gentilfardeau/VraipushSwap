@@ -1,7 +1,5 @@
 #include "../include/push_swap.h"
 
-
-
 // Permet de stocker les splits dans des nodes
 bool ft_split_init(char *str, t_node **s_a)
 {
@@ -13,7 +11,7 @@ bool ft_split_init(char *str, t_node **s_a)
 	split = ft_split(str, ' ');
 	while (split[i])
 	{
-		if (ft_check_digit(split[i], true))
+		if (!ft_check_digit(split[i], false))
 			return (false);
 		value = ft_atol(split[i]);
 		if (ft_atol_checked(value))

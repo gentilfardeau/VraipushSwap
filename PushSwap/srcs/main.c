@@ -10,7 +10,10 @@ int main (int argc, char **argv)
 	if (argc < 2 || !argv[1])
 		return (ft_error_message());
 	if (!ft_parsing(argv, &stack_a))
+	{
+		ft_free_all(stack_a, stack_b);
 		return (ft_error_message());
+	}
 	if (!ft_stack_sorted(stack_a))
 	{
 		len = ft_stack_len(stack_a);
