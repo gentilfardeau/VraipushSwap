@@ -61,6 +61,7 @@ bool ft_set_target_b(t_node *s_a, t_node *s_b)
 	}
 	return (true);
 }
+
 // Set current_pos a la stack
 bool ft_set_current(t_node *stack)
 {

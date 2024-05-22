@@ -45,6 +45,7 @@ bool ft_rrb(t_node **s_b, bool checker)
 	return (true);
 }
 
+// Reverse rotate A et B
 bool	ft_rrr(t_node **s_a, t_node **s_b, bool checker)
 {
 	if (!s_a || !s_b)
@@ -55,7 +56,7 @@ bool	ft_rrr(t_node **s_a, t_node **s_b, bool checker)
 		ft_printf("rrr\n");
 	return (true);
 }
-// Reverse rotate les 2
+// RRR tant que le cheapest et target_node ne sont pas au top
 bool ft_rev_rotate_both(t_node **s_a, t_node **s_b, t_node *cheap)
 {
 	if (!s_a || !s_b || !cheap)

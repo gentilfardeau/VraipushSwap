@@ -1,5 +1,6 @@
 #include "../include/push_swap.h"
 
+// Libere un noeud
 int ft_free_node(t_node *node)
 {
 	if (!node)
@@ -8,6 +9,7 @@ int ft_free_node(t_node *node)
 	return (0);
 }
 
+// Libere les stacks A et B
 int ft_free_all(t_node *s_a, t_node *s_b)
 {
 	t_node *tmp;

@@ -9,7 +9,7 @@
 
 // NOTES :
 // PENSER A TRAITER LES > INT
-//
+// ATTENTION INT MAX QUI FAIT NAWAK
 // 
 //
 //
@@ -81,7 +81,7 @@ bool 	ft_min_to_top(t_node **s_a);
 bool	ft_check_digit(char *str, bool space);
 bool	ft_check_double(t_node *stack);
 int		ft_space_found(char *str);
-int		ft_stack_sorted(t_node *stack);
+bool		ft_stack_sorted(t_node *stack);
 bool	ft_split_init(char *str, t_node **s_a);
 bool	ft_parsing(char **argv, t_node **s_a);
 

@@ -1,6 +1,6 @@
 #include "../include/push_swap.h"
 
-// Update le cout
+// Update le cout pour les noeuds
 bool	ft_set_cost(t_node *active, t_node *passive)
 {
 	int len_a;
@@ -24,7 +24,7 @@ bool	ft_set_cost(t_node *active, t_node *passive)
 	return (true);
 }
 
-// Trouve le cout le plus petit pour bouger le prochain noeud
+// Compare les couts pour assigner le cheapest 
 bool ft_set_cheapest(t_node *stack)
 {
 	int min;
@@ -52,6 +52,7 @@ bool ft_set_cheapest(t_node *stack)
 	return (false);
 }
 
+// Trouve le noeud avec cheapest = true 
 t_node *ft_find_cheapest(t_node *stack)
 {
 	while (stack)

@@ -1,7 +1,7 @@
 #include "../include/push_swap.h"
 
-// Renvoie 1 si la stack est triee
-int ft_stack_sorted(t_node *stack)
+// Renvoie true si la stack est triee
+bool ft_stack_sorted(t_node *stack)
 {
 	int max;
 
@@ -10,9 +10,9 @@ int ft_stack_sorted(t_node *stack)
 		max = stack->content;
 		stack = stack->next;
 		if (stack->content < max)
-			return (0);
+			return (false);
 	}
-	return (1);
+	return (true);
 }
 
 // Permet les deplacements de A vers B
@@ -41,6 +41,7 @@ bool ft_move_b_to_a(t_node **s_a, t_node **s_b)
 	return (true);
 }
 
+// Coeur du tri, et utiliser pour les stacks de 3
 bool ft_mini_sort(t_node **s_a)
 {
 	t_node *max;
@@ -57,6 +58,7 @@ bool ft_mini_sort(t_node **s_a)
 	return (true);
 }
 
+// Trie pour les stacks de plus de 3
 bool ft_sorting(t_node **s_a, t_node **s_b)
 {
 	int len_a;
@@ -74,18 +76,12 @@ bool ft_sorting(t_node **s_a, t_node **s_b)
 			return (false);
 	}
 	ft_mini_sort(s_a);
-	ft_printf("Avant SB\n");
-	ft_print_stack_content(*s_a, "content", 'a');
 	while (*s_b)
 	{
-		if (!ft_set_nodes_b(*s_a, *s_b))
-			ft_printf("Zgueugounet\n");
-		ft_printf("Uiiii\n");
-		if (!ft_move_b_to_a(s_a, s_b))
-			ft_printf("Zeub\n");
+		if (!ft_set_nodes_b(*s_a, *s_b) || !ft_move_b_to_a(s_a, s_b))
+			return (false);
 	}
 	ft_set_current(*s_a);
-	ft_print_stack_content(*s_a, "current_pos", 'a');
 	ft_final_sort(s_a);
 	return (true);
 }

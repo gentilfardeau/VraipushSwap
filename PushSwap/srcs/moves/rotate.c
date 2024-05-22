@@ -1,5 +1,6 @@
 #include "../../include/push_swap.h"
 
+// Fonction de base de rotate
 bool ft_rotate(t_node **stack)
 {
 	t_node *last;
@@ -15,6 +16,7 @@ bool ft_rotate(t_node **stack)
 	return (true);
 }
 
+// Rotate A
 bool ft_ra(t_node **s_a, bool checker)
 {
 	if (!s_a)
@@ -26,6 +28,7 @@ bool ft_ra(t_node **s_a, bool checker)
 	return (true);
 }
 
+// Rotate B
 bool ft_rb(t_node **s_b, bool checker)
 {
 	if (!s_b || !ft_rotate(s_b))
@@ -35,6 +38,7 @@ bool ft_rb(t_node **s_b, bool checker)
 	return (true);
 }
 
+// Rotate A et B
 bool ft_rr(t_node **s_a, t_node **s_b, bool checker)
 {
 	if (!s_a || !s_b)
@@ -46,6 +50,7 @@ bool ft_rr(t_node **s_a, t_node **s_b, bool checker)
 	return (true);
 }
 
+// RR tant que cheapest ou target_node ne sont pas au top
 bool ft_rotate_both(t_node **s_a, t_node **s_b, t_node *cheap)
 {
 	if (!s_a || !s_b || !cheap)

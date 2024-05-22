@@ -50,7 +50,7 @@ bool ft_parsing(char **argv, t_node **s_a)
 		}
 		i++;
 	}
-	if (!ft_check_double(*s_a))
+	if (!ft_check_double(*s_a) || ft_stack_sorted(*s_a))
 		return (false);
 	return (true);
 }
