@@ -23,9 +23,9 @@ bool ft_final_sort(t_node **s_a)
 	while ((*s_a)->content != ft_find_smallest(*s_a)->content)
 	{
 		if (ft_find_smallest(*s_a)->above_median)
-			ft_ra(s_a, false);
+			ft_ra(s_a, true);
 		else
-			ft_rra(s_a , false);
+			ft_rra(s_a , true);
 	}
 	return (true);
 }

@@ -45,9 +45,9 @@ bool ft_parsing(char **argv, t_node **s_a)
 			nb = ft_atol(argv[i]);
 			if (ft_atol_checked(nb))
 				ft_node_addback((int)nb, s_a);
-			else
-				return (false);
 		}
+		else
+			return (false);
 		i++;
 	}
 	if (!ft_check_double(*s_a) || ft_stack_sorted(*s_a))

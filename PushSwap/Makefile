@@ -5,8 +5,7 @@ SRCS =  srcs/main.c srcs/init.c srcs/parsing.c  \
 		srcs/moves/rotate.c srcs/moves/push.c \
 		srcs/moves/reverse_rotate.c srcs/moves/swap.c \
         utils/error_utils.c  utils/nodes_utils.c  utils/number_utils.c \
-        utils/output_utils.c utils/extras.c \
-		utils/sorting_utils.c utils/free.c utils/parsing_utils.c \
+        utils/extras.c utils/sorting_utils.c utils/free.c utils/parsing_utils.c \
 		include/split.c 
 		
 

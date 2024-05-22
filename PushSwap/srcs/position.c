@@ -36,13 +36,13 @@ bool ft_set_target_b(t_node *s_a, t_node *s_b)
 {
 	t_node *current_a;
 	t_node *target;
-	int match_index;
+	long match_index;
 
 	if (!s_a || !s_b)
 		return (false);
 	while (s_b)
 	{
-		match_index = INT_MAX;
+		match_index = 2147483648;
 		current_a = s_a;
 		while (current_a)
 		{
@@ -53,7 +53,7 @@ bool ft_set_target_b(t_node *s_a, t_node *s_b)
 			}
 			current_a = current_a->next;
 		}
-		if (match_index == INT_MAX)
+		if (match_index == 2147483648)
 			s_b->target_node = ft_find_smallest(s_a);
 		else
 			s_b->target_node = target;

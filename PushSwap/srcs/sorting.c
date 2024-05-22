@@ -1,20 +1,5 @@
 #include "../include/push_swap.h"
 
-// Renvoie true si la stack est triee
-bool ft_stack_sorted(t_node *stack)
-{
-	int max;
-
-	while(stack->next != NULL)
-	{
-		max = stack->content;
-		stack = stack->next;
-		if (stack->content < max)
-			return (false);
-	}
-	return (true);
-}
-
 // Permet les deplacements de A vers B
 bool ft_move_a_to_b(t_node **s_a, t_node **s_b)
 {
@@ -27,7 +12,7 @@ bool ft_move_a_to_b(t_node **s_a, t_node **s_b)
 		ft_rev_rotate_both(s_a, s_b, cheap);
 	ft_set_to_push(s_a, cheap, 'a');
 	ft_set_to_push(s_b, cheap->target_node, 'b');
-	ft_push_b(s_a, s_b, false);
+	ft_push_b(s_a, s_b, true);
 	return (true);
 }
 
@@ -37,7 +22,7 @@ bool ft_move_b_to_a(t_node **s_a, t_node **s_b)
 	if (!s_a || !s_b)
 		return (false);
 	ft_set_to_push(s_a, (*s_b)->target_node, 'a');
-	ft_push_a(s_a, s_b, false);
+	ft_push_a(s_a, s_b, true);
 	return (true);
 }
 
@@ -50,11 +35,11 @@ bool ft_mini_sort(t_node **s_a)
 		return (false);
 	max = ft_find_biggest(*s_a);
 	if (max == (*s_a))
-		ft_ra(s_a, false);
+		ft_ra(s_a, true);
 	else if ((*s_a)->next == max)
-		ft_rra(s_a, false);
+		ft_rra(s_a, true);
 	if ((*s_a)->content > (*s_a)->next->content)
-		ft_swap_a(s_a, false);
+		ft_swap_a(s_a, true);
 	return (true);
 }
 
@@ -67,9 +52,9 @@ bool ft_sorting(t_node **s_a, t_node **s_b)
 		return (false);
 	len_a = ft_stack_len(*s_a);
 	if (len_a-- > 3 && !ft_stack_sorted(*s_a))
-		ft_push_b(s_a, s_b, false);
+		ft_push_b(s_a, s_b, true);
 	if (len_a-- > 3 && !ft_stack_sorted(*s_a))
-		ft_push_b(s_a, s_b, false);
+		ft_push_b(s_a, s_b, true);
 	while (len_a-- > 3 && !ft_stack_sorted(*s_a))
 	{
 		if (!ft_set_nodes_a(*s_a, *s_b) || !ft_move_a_to_b(s_a, s_b))

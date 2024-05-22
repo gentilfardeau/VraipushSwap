@@ -56,7 +56,7 @@ bool ft_rotate_both(t_node **s_a, t_node **s_b, t_node *cheap)
 	if (!s_a || !s_b || !cheap)
 		return (false);
 	while (*s_b != cheap->target_node && *s_a != cheap)
-		ft_rr(s_a, s_b, false);
+		ft_rr(s_a, s_b, true);
 	ft_set_current(*s_a);
 	ft_set_current(*s_b);
 	return (true);

@@ -60,16 +60,16 @@ bool ft_set_to_push(t_node **stack, t_node *top, char c)
 		if (c == 'a')
 		{
 			if (top->above_median)
-				ft_ra(stack, false);
+				ft_ra(stack, true);
 			else
-				ft_rra(stack, false);
+				ft_rra(stack, true);
 		}
 		else if (c == 'b')
 		{
 			if (top->above_median)
-				ft_rb(stack, false);
+				ft_rb(stack, true);
 			else
-				ft_rrb(stack, false);
+				ft_rrb(stack, true);
 		}
 	}
 	return (true);
