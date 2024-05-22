@@ -8,7 +8,7 @@ int main (int argc, char **argv)
 	t_node *stack_b = NULL;
 
 	if (argc < 2 || !argv[1])
-		return (ft_error_message());
+		return (1);
 	if (!ft_parsing(argv, &stack_a))
 	{
 		ft_free_all(stack_a, stack_b);
