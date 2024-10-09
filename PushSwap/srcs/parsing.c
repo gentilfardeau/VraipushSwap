@@ -1,11 +1,11 @@
 #include "../include/push_swap.h"
 
 // Permet de stocker les splits dans des nodes
-bool ft_split_init(char *str, t_node **s_a)
+bool	ft_split_init(char *str, t_node **s_a)
 {
-	int i;
-	int value;
-	char **split;
+	int		i;
+	int		value;
+	char	**split;
 
 	i = 0;
 	split = ft_split(str, ' ');
@@ -23,12 +23,12 @@ bool ft_split_init(char *str, t_node **s_a)
 	free(split);
 	return (true);
 }
- 
+
 // Englobe le parsing et initialise la stack A
-bool ft_parsing(char **argv, t_node **s_a)
+bool	ft_parsing(char **argv, t_node **s_a)
 {
-	int i;
-	long nb;
+	int		i;
+	long	nb;
 
 	if (!argv || !s_a)
 		return (false);

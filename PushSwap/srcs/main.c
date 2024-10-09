@@ -1,12 +1,14 @@
 #include "../include/push_swap.h"
 
 // Pense a secure les fonctions pour un seul element :D ///
-int main (int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	size_t len;
-	t_node *stack_a = NULL;
-	t_node *stack_b = NULL;
+	size_t	len;
+	t_node	*stack_a;
+	t_node	*stack_b;
 
+	stack_a = NULL;
+	stack_b = NULL;
 	if (argc < 2 || !argv[1])
 		return (1);
 	if (!ft_parsing(argv, &stack_a))

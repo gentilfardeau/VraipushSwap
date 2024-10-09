@@ -6,7 +6,6 @@ bool	ft_node_addback(int content, t_node **stack)
 	t_node	*tmp;
 	t_node	*new;
 
-
 	if (!content || !stack)
 		return (false);
 	new = ft_node_init(content);
@@ -14,11 +13,11 @@ bool	ft_node_addback(int content, t_node **stack)
 	{
 		if (*stack == NULL)
 			*stack = new;
-		else 
+		else
 		{
 			tmp = ft_find_last(*stack);
 			tmp->next = new;
-			new->previous = tmp;	
+			new->previous = tmp;
 		}
 	}
 	else
@@ -39,10 +38,8 @@ bool	ft_set_nodes_a(t_node *s_a, t_node *s_b)
 	return (true);
 }
 
-
-
 // Operations pour set les caracs de s_b
-bool ft_set_nodes_b(t_node *s_a, t_node *s_b)
+bool	ft_set_nodes_b(t_node *s_a, t_node *s_b)
 {
 	if (!s_a || !s_b)
 		return (false);
@@ -51,9 +48,9 @@ bool ft_set_nodes_b(t_node *s_a, t_node *s_b)
 	ft_set_target_b(s_a, s_b);
 	return (true);
 }
- 
+
 // Prepare pour transferer vers l'autre stack
-bool ft_set_to_push(t_node **stack, t_node *top, char c)
+bool	ft_set_to_push(t_node **stack, t_node *top, char c)
 {
 	while (*stack != top)
 	{

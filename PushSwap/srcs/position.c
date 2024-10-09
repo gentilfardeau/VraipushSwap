@@ -3,9 +3,9 @@
 // Trouve les target_node pour A
 bool	ft_set_target_a(t_node *s_a, t_node *s_b)
 {
-	t_node *current_b;
-	t_node *target;
-	int match_index;
+	t_node	*current_b;
+	t_node	*target;
+	int		match_index;
 
 	if (!s_a || !s_b)
 		return (false);
@@ -15,7 +15,8 @@ bool	ft_set_target_a(t_node *s_a, t_node *s_b)
 		current_b = s_b;
 		while (current_b)
 		{
-			if (current_b->content < s_a->content && current_b->content > match_index)
+			if (current_b->content < s_a->content
+				&& current_b->content > match_index)
 			{
 				match_index = current_b->content;
 				target = current_b;
@@ -32,11 +33,11 @@ bool	ft_set_target_a(t_node *s_a, t_node *s_b)
 }
 
 // Trouve les target_node pour B
-bool ft_set_target_b(t_node *s_a, t_node *s_b)
+bool	ft_set_target_b(t_node *s_a, t_node *s_b)
 {
-	t_node *current_a;
-	t_node *target;
-	long match_index;
+	t_node	*current_a;
+	t_node	*target;
+	long	match_index;
 
 	if (!s_a || !s_b)
 		return (false);
@@ -46,7 +47,8 @@ bool ft_set_target_b(t_node *s_a, t_node *s_b)
 		current_a = s_a;
 		while (current_a)
 		{
-			if (current_a->content > s_b->content && current_a->content < match_index)
+			if (current_a->content > s_b->content
+				&& current_a->content < match_index)
 			{
 				match_index = current_a->content;
 				target = current_a;
@@ -63,10 +65,10 @@ bool ft_set_target_b(t_node *s_a, t_node *s_b)
 }
 
 // Set current_pos a la stack
-bool ft_set_current(t_node *stack)
+bool	ft_set_current(t_node *stack)
 {
-	int i;
-	int median;
+	int	i;
+	int	median;
 
 	if (!stack)
 		return (false);

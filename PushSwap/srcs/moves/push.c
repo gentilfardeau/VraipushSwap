@@ -1,11 +1,11 @@
 #include "../../include/push_swap.h"
 
 // Push d'une stack a l'autre
-bool ft_push(t_node **src, t_node **dst)
+bool	ft_push(t_node **src, t_node **dst)
 {
-	t_node *tmp;
+	t_node	*tmp;
 
-	if (!dst || !src)	
+	if (!dst || !src)
 		return (false);
 	tmp = *src;
 	*src = (*src)->next;

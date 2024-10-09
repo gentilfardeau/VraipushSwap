@@ -3,8 +3,8 @@
 // Update le cout pour les noeuds
 bool	ft_set_cost(t_node *active, t_node *passive)
 {
-	int len_a;
-	int len_p;
+	int	len_a;
+	int	len_p;
 
 	if (!active || !passive)
 		return (false);
@@ -24,11 +24,11 @@ bool	ft_set_cost(t_node *active, t_node *passive)
 	return (true);
 }
 
-// Compare les couts pour assigner le cheapest 
-bool ft_set_cheapest(t_node *stack)
+// Compare les couts pour assigner le cheapest
+bool	ft_set_cheapest(t_node *stack)
 {
-	int min;
-	t_node *tmp;
+	int		min;
+	t_node	*tmp;
 
 	if (!stack)
 		return (false);
@@ -36,7 +36,7 @@ bool ft_set_cheapest(t_node *stack)
 	min = stack->cost;
 	while (tmp)
 	{
-		if (tmp->cost < min)	
+		if (tmp->cost < min)
 			min = tmp->cost;
 		tmp = tmp->next;
 	}
@@ -52,8 +52,8 @@ bool ft_set_cheapest(t_node *stack)
 	return (false);
 }
 
-// Trouve le noeud avec cheapest = true 
-t_node *ft_find_cheapest(t_node *stack)
+// Trouve le noeud avec cheapest = true
+t_node	*ft_find_cheapest(t_node *stack)
 {
 	while (stack)
 	{

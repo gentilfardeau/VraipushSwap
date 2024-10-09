@@ -1,10 +1,10 @@
 #include "../../include/push_swap.h"
 
 // Fonction de base de swap
-bool ft_swap(t_node **stack)
+bool	ft_swap(t_node **stack)
 {
-	t_node *top;
-	t_node *bot;
+	t_node	*top;
+	t_node	*bot;
 
 	if (!*stack || !(*stack)->next)
 		return (false);
@@ -17,16 +17,16 @@ bool ft_swap(t_node **stack)
 }
 
 // Swap A
-bool ft_swap_a(t_node **s_a, bool checker)
+bool	ft_swap_a(t_node **s_a, bool checker)
 {
-	if (!s_a  || !ft_swap(s_a))
+	if (!s_a || !ft_swap(s_a))
 		return (false);
 	if (checker)
 		ft_printf("sa\n");
 	return (true);
 }
 
-bool ft_swap_b(t_node **s_b, bool checker)
+bool	ft_swap_b(t_node **s_b, bool checker)
 {
 	if (!s_b || !ft_swap(s_b))
 		return (false);
@@ -35,7 +35,7 @@ bool ft_swap_b(t_node **s_b, bool checker)
 	return (true);
 }
 
-bool ft_swap_both(t_node **s_a, t_node **s_b, bool checker)
+bool	ft_swap_both(t_node **s_a, t_node **s_b, bool checker)
 {
 	if (!s_a || !s_b)
 		return (false);

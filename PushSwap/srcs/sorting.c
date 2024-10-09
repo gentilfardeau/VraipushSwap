@@ -1,9 +1,9 @@
 #include "../include/push_swap.h"
 
 // Permet les deplacements de A vers B
-bool ft_move_a_to_b(t_node **s_a, t_node **s_b)
+bool	ft_move_a_to_b(t_node **s_a, t_node **s_b)
 {
-	t_node *cheap;
+	t_node	*cheap;
 
 	cheap = ft_find_cheapest(*s_a);
 	if (cheap->above_median && cheap->target_node->above_median)
@@ -17,7 +17,7 @@ bool ft_move_a_to_b(t_node **s_a, t_node **s_b)
 }
 
 // Permet les deplacements de B vers A
-bool ft_move_b_to_a(t_node **s_a, t_node **s_b)
+bool	ft_move_b_to_a(t_node **s_a, t_node **s_b)
 {
 	if (!s_a || !s_b)
 		return (false);
@@ -27,9 +27,9 @@ bool ft_move_b_to_a(t_node **s_a, t_node **s_b)
 }
 
 // Coeur du tri, et utiliser pour les stacks de 3
-bool ft_mini_sort(t_node **s_a)
+bool	ft_mini_sort(t_node **s_a)
 {
-	t_node *max;
+	t_node	*max;
 
 	if (!s_a)
 		return (false);
@@ -44,7 +44,7 @@ bool ft_mini_sort(t_node **s_a)
 }
 
 // Trie pour les stacks de plus de 3
-bool ft_sorting(t_node **s_a, t_node **s_b)
+bool	ft_sorting(t_node **s_a, t_node **s_b)
 {
 	int len_a;
 

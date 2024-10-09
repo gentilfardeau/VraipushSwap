@@ -1,10 +1,10 @@
 #include "../../include/push_swap.h"
 
 // Fonction de base de rotate
-bool ft_rotate(t_node **stack)
+bool	ft_rotate(t_node **stack)
 {
-	t_node *last;
-	t_node *newhead;
+	t_node	*last;
+	t_node	*newhead;
 
 	if (!*stack || !(*stack)->next)
 		return (false);
@@ -17,7 +17,7 @@ bool ft_rotate(t_node **stack)
 }
 
 // Rotate A
-bool ft_ra(t_node **s_a, bool checker)
+bool	ft_ra(t_node **s_a, bool checker)
 {
 	if (!s_a)
 		return (false);
@@ -29,7 +29,7 @@ bool ft_ra(t_node **s_a, bool checker)
 }
 
 // Rotate B
-bool ft_rb(t_node **s_b, bool checker)
+bool	ft_rb(t_node **s_b, bool checker)
 {
 	if (!s_b || !ft_rotate(s_b))
 		return (false);
@@ -39,7 +39,7 @@ bool ft_rb(t_node **s_b, bool checker)
 }
 
 // Rotate A et B
-bool ft_rr(t_node **s_a, t_node **s_b, bool checker)
+bool	ft_rr(t_node **s_a, t_node **s_b, bool checker)
 {
 	if (!s_a || !s_b)
 		return (false);
@@ -51,7 +51,7 @@ bool ft_rr(t_node **s_a, t_node **s_b, bool checker)
 }
 
 // RR tant que cheapest ou target_node ne sont pas au top
-bool ft_rotate_both(t_node **s_a, t_node **s_b, t_node *cheap)
+bool	ft_rotate_both(t_node **s_a, t_node **s_b, t_node *cheap)
 {
 	if (!s_a || !s_b || !cheap)
 		return (false);
@@ -61,4 +61,3 @@ bool ft_rotate_both(t_node **s_a, t_node **s_b, t_node *cheap)
 	ft_set_current(*s_b);
 	return (true);
 }
- 
