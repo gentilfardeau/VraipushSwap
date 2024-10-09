@@ -31,6 +31,8 @@ bool ft_check_digit(char *str, bool space)
 	while (str[i])
 	{
 		trigger = 0;
+		if (str[0] == '\0')
+			return (false);
 		if ((str[i] == '-' || str[i] == '+') && i == 0)
 			trigger = 1;
 		else if (str[i] == ' ' && space == true)
